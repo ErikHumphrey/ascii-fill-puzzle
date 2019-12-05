@@ -10,8 +10,6 @@ def main():
     print(str(input[2]))
     fill(board, board[int(input[1])][int(input[2])], input[0], input[1], input[2])
 
-
-
 def readLevel(num) -> list:
     with open("levels/ascii_fill_level" + str(num) + ".txt", "r") as file:
         array = [list(line.strip()) for line in file]
@@ -39,7 +37,7 @@ def getUserAction(h, w) -> list:
     return [symbol, row, col]
 
 def fill(board, strT, strS, intR, intC):
-    print("lmao")
+    print("DEBUG: Trying to replace '" + strT + "'s near [" + str(intR) + "," + str(intC) + "] with '" + strS + "'...")  
 
 
 
