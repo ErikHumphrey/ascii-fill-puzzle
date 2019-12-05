@@ -46,7 +46,7 @@ def readLevel(num) -> list:
 def displayBoard(lst):
     count = -1
     
-    print("   ", end="")
+    print("\n   ", end="")
     for char in lst[0]:
         count = (count + 1) % 10
         print(count, end="")
