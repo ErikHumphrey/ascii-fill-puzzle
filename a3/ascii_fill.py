@@ -3,18 +3,28 @@
 # Student number: 1010XXXXX
 
 def main():
+    totalMoves = 0
     for i in range(1, 6):
-        print(i)
         board = readLevel(i)
         displayBoard(board)
         complete = 0
+        moves = 0
         while complete == 0:
-            input = getUserAction(len(board), len(board[0]))
-            fill(board, board[int(input[1])][int(input[2])], input[0], input[1], input[2])
-
-
-
-    displayBoard(board)
+            moves = moves + 1
+            action = getUserAction(len(board), len(board[0]))
+            fill(board, board[int(action[1])][int(action[2])], action[0], action[1], action[2])
+            complete = 1
+            for line in board:
+                for char in line:
+                    if char != action[1]:
+                        complete = 0
+        totalMoves = totalMoves + moves
+        print("Level " + i + " Completed in " + moves + " moves!")
+    print("You Win! Thanks for playing!")
+    print("Total moves: " + totalMoves)
+    playAgain = input("Would you like to play again? (y/n): ")
+    if (playAgain == "y" or playAgain == "yes"):
+        main()
 
 def readLevel(num) -> list:
     with open("levels/ascii_fill_level" + str(num) + ".txt", "r") as file:
@@ -45,7 +55,6 @@ def getUserAction(h, w) -> list:
 def fill(board, strT, strS, intR, intC):
     # print("DEBUG: Trying to replace '" + strT + "'s near [" + str(intR) + "," + str(intC) + "] with '" + strS + "'...")
     if (intR < len(board) and intC < len(board[0]) and strT == board[intR][intC] and strT != strS):
-        print(str(intR) + " < height: " + str(len(board)) + ", " + str(intC) + " < length:" + str(len(board[0])))
         board[intR][intC] = strS
         fill(board, strT, strS, intR + 1, intC)
         fill(board, strT, strS, intR - 1, intC)
