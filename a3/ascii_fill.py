@@ -64,9 +64,36 @@ def displayBoard(lst):
 
 # getUserAction() takes in the height and width of the board and returns a single list of the user's inputs
 def getUserAction(h, w) -> list:
-    symbol = input("Enter a symbol: ")
-    row = input("Select a row [0," + str(h - 1) + "]: ")
-    col = input("Select a col [0," + str(w - 1) + "]: ")
+    while True:
+        symbol = input("Enter a symbol: ")
+        if len(symbol) != 1:
+            print("Error: The symbol should be exactly 1 character.")
+            continue
+        else:
+            break
+
+    while True:
+        row = input("Select a row [0," + str(h - 1) + "]: ")
+        if not row.isdigit():
+            print("Error: The row should be a non-negative integer.")
+            continue
+        elif (int(row) < 0 or int(row) > (h - 1)):
+            print("Error: The row should be between 0 and " + str(h - 1) + ".")
+            continue
+        else:
+            break
+
+    while True:
+        col = input("Select a col [0," + str(h - 1) + "]: ")
+        if not row.isdigit():
+            print("Error: The column should be a non-negative integer.")
+            continue
+        if (int(col) < 0 or int(col) > (h - 1)):
+            print("Error: The column should be between 0 and " + str(w - 1) + ".")
+            continue
+        else:
+            break
+
     return [symbol, int(row), int(col)]
 
 # fill() checks if the user's symbol, row, and column inputs are valid then recursively replaces neighbouring symbols at the list coordinates with the chosen symbol
