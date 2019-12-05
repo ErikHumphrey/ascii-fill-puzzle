@@ -21,7 +21,7 @@ def main():
                         complete = 0
         # Level completed
         totalMoves = totalMoves + moves
-        print("Level " + str(i) + " Completed in " + str(moves) + " moves!")
+        print("Level " + str(i) + " Completed in " + str(moves) + " moves!\n")
     # Congratulate the user once all 5 levels are completed and display the total moves taken
     print("You Win! Thanks for playing!")
     print("Total moves: " + str(totalMoves))
