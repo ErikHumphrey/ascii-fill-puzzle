@@ -86,7 +86,7 @@ def getUserAction(h, w) -> list:
             break
 
     while True:
-        col = input("Select a col [0," + str(h - 1) + "]: ")
+        col = input("Select a col [0," + str(w - 1) + "]: ")
         if not row.isdigit():
             print("Error: The column should be a non-negative integer.")
             continue
