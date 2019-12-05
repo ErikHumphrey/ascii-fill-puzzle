@@ -105,6 +105,5 @@ def fill(board, strT, strS, intR, intC):
         fill(board, strT, strS, intR, intC + 1) # Search right
         fill(board, strT, strS, intR, intC - 1) # Search left
 
-
-
+# Run the program by calling main()
 main()
