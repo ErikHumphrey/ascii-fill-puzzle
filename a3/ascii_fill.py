@@ -13,10 +13,11 @@ def main():
             moves = moves + 1
             action = getUserAction(len(board), len(board[0]))
             fill(board, board[int(action[1])][int(action[2])], action[0], action[1], action[2])
+            displayBoard(board)
             complete = 1
             for line in board:
                 for char in line:
-                    if char != action[1]:
+                    if char != action[0]:
                         complete = 0
         totalMoves = totalMoves + moves
         print("Level " + i + " Completed in " + moves + " moves!")
