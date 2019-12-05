@@ -3,12 +3,18 @@
 # Student number: 1010XXXXX
 
 def main():
-    board = readLevel(1)
+    for i in range(1, 6):
+        print(i)
+        board = readLevel(i)
+        displayBoard(board)
+        complete = 0
+        while complete == 0:
+            input = getUserAction(len(board), len(board[0]))
+            fill(board, board[int(input[1])][int(input[2])], input[0], input[1], input[2])
+
+
+
     displayBoard(board)
-    input = getUserAction(len(board), len(board[0]))
-    print(str(input[1]))
-    print(str(input[2]))
-    fill(board, board[int(input[1])][int(input[2])], input[0], input[1], input[2])
 
 def readLevel(num) -> list:
     with open("levels/ascii_fill_level" + str(num) + ".txt", "r") as file:
@@ -22,7 +28,7 @@ def displayBoard(lst):
         count = (count + 1) % 10
         print(count, end="")
     print("\n   ---------")
-    count = 0
+    count = -1
     for line in lst:
         count = count + 1
         print("{0:0=2d}".format(count) + "|", end="")
@@ -34,10 +40,17 @@ def getUserAction(h, w) -> list:
     symbol = input("Enter a symbol: ")
     row = input("Select a row [0," + str(h) + "]: ")
     col = input("Select a col [0," + str(w) + "]: ")
-    return [symbol, row, col]
+    return [symbol, int(row), int(col)]
 
 def fill(board, strT, strS, intR, intC):
-    print("DEBUG: Trying to replace '" + strT + "'s near [" + str(intR) + "," + str(intC) + "] with '" + strS + "'...")  
+    # print("DEBUG: Trying to replace '" + strT + "'s near [" + str(intR) + "," + str(intC) + "] with '" + strS + "'...")
+    if (intR < len(board) and intC < len(board[0]) and strT == board[intR][intC] and strT != strS):
+        print(str(intR) + " < height: " + str(len(board)) + ", " + str(intC) + " < length:" + str(len(board[0])))
+        board[intR][intC] = strS
+        fill(board, strT, strS, intR + 1, intC)
+        fill(board, strT, strS, intR - 1, intC)
+        fill(board, strT, strS, intR, intC + 1)
+        fill(board, strT, strS, intR, intC - 1)
 
 
 
