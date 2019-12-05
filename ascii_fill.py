@@ -68,19 +68,16 @@ def displayBoard(lst):
 def getUserAction(h, w) -> list:
     while True:
         symbol = input("Enter a symbol: ")
-        if len(symbol) != 1:
-            print("Error: The symbol should be exactly 1 character.")
+        if len(symbol) != 1 or not any(x in symbol for x in ["#", "&", "%", "@"]):
+            print("Sorry, please select one of: # & % @")
             continue
         else:
             break
 
     while True:
         row = input("Select a row [0," + str(h - 1) + "]: ")
-        if not row.isdigit():
-            print("Error: The row should be a non-negative integer.")
-            continue
-        elif (int(row) < 0 or int(row) > (h - 1)):
-            print("Error: The row should be between 0 and " + str(h - 1) + ".")
+        if not row.isdigit() or int(row) < 0 or int(row) > (h - 1):
+            print("Error bad row. Enter a number from 0 to " + str(h - 1) + ".")
             continue
         else:
             break
