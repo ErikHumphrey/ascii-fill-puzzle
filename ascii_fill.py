@@ -1,7 +1,3 @@
-# COMP 1405 Assignment 5
-# Name: John Appleseed
-# Student number: 1010XXXXX
-
 # main() is the function executed when the program starts
 def main():
     totalMoves = 0
