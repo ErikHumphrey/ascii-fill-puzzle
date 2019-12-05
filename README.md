@@ -10,7 +10,7 @@ The rules and sample levels are borrowed from a specification for a programming 
 
 ## To play
 
-Clone the repository and run `cd ascii-fill-puzzle/a3 && python ascii_fill.py`, then follow the prompts.
+Clone the repository and run `cd ascii-fill-puzzle && python ascii_fill.py`, then follow the prompts.
 
 The game currently goes through levels named "ascii_fill_levelX.txt" in the "levels" folder, where X is the level number from 1 to 5.
 
