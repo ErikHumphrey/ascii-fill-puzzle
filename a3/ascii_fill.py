@@ -20,17 +20,21 @@ def main():
                     if char != action[0]:
                         complete = 0
         totalMoves = totalMoves + moves
-        print("Level " + i + " Completed in " + moves + " moves!")
+        print("Level " + str(i) + " Completed in " + str(moves) + " moves!")
     print("You Win! Thanks for playing!")
-    print("Total moves: " + totalMoves)
+    print("Total moves: " + str(totalMoves))
     playAgain = input("Would you like to play again? (y/n): ")
     if (playAgain == "y" or playAgain == "yes"):
         main()
 
 def readLevel(num) -> list:
-    with open("levels/ascii_fill_level" + str(num) + ".txt", "r") as file:
-        array = [list(line.strip()) for line in file]
-        return(array)
+    try:
+        with open("levels/ascii_fill_level" + str(num) + ".txt", "r") as file:
+            array = [list(line.strip()) for line in file]
+            return(array)
+    except:
+        print("Error reading file levels/ascii_fill_level" + str(num) + ".txt")
+        exit()
 
 def displayBoard(lst):
     count = -1
