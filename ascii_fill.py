@@ -45,11 +45,17 @@ def readLevel(num) -> list:
 # displayBoard() takes a list and displays it inside a game board template based on the height and width of the list
 def displayBoard(lst):
     count = -1
+    
     print("   ", end="")
     for char in lst[0]:
         count = (count + 1) % 10
         print(count, end="")
-    print("\n   ---------")
+    print("\n   ", end="")
+
+    for line in lst[0]:
+        print("-", end="")
+    
+    print("\n", end="")
     count = -1
     for line in lst:
         count = count + 1
@@ -84,7 +90,7 @@ def getUserAction(h, w) -> list:
         if not row.isdigit():
             print("Error: The column should be a non-negative integer.")
             continue
-        if (int(col) < 0 or int(col) > (h - 1)):
+        if (int(col) < 0 or int(col) > (w - 1)):
             print("Error: The column should be between 0 and " + str(w - 1) + ".")
             continue
         else:
