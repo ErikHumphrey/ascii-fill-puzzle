@@ -43,7 +43,7 @@ def readLevel(num) -> list:
             return(lst)
     except:
         # Display an error if the file cannot be read
-        print("Error reading file levels/ascii_fill_level" + str(num) + ".txt")
+        print("Failed to read level " + str(num) + ". Game ending.")
         exit()
 
 # displayBoard() takes a list and displays it inside a game board template based on the height and width of the list
